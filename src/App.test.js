@@ -51,3 +51,33 @@ test("increases the counter by 1 when incremented", () => {
   const counterDisplay = findByAttr(wrapper, "counter-display");
   expect(counterDisplay.text()).toContain(counter + 1);
 });
+
+test("to check the counter decrement button", () => {
+  const wrapper = setup();
+  const counterDecrementButton = findByAttr(
+    wrapper,
+    "counter-decrement-button"
+  );
+  expect(counterDecrementButton.length).toBe(1);
+});
+
+test("decreases the counter by 1 when decremented", () => {
+  const counter = 6;
+  const wrapper = setup(null, { counter });
+  const button = findByAttr(wrapper, "counter-decrement-button");
+  button.simulate("click");
+  const counterDisplay = findByAttr(wrapper, "counter-display");
+  expect(counterDisplay.text()).toContain(counter - 1);
+});
+
+test("should not decrement the counter less than 0 and should throw and alert", () => {
+  const counter = 0;
+  const error = false;
+  const wrapper = setup(null, { counter, error });
+  const button = findByAttr(wrapper, "counter-decrement-button");
+  button.simulate("click");
+  const counterDisplay = findByAttr(wrapper, "counter-display");
+  const alert = findByAttr(wrapper, "counter-error");
+  expect(counterDisplay.text()).toContain(0);
+  expect(alert.length).toBe(1);
+});
