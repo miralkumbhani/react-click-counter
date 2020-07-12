@@ -1,3 +1,6 @@
+# Click React Counter
+This is a simple project of counter that increments and decrements the counter and is developed using the TDD approach with Jest and Enzyme. It simply increments or decrements values and doesn't let it decrease than 0 and shows an alert when that happens.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
